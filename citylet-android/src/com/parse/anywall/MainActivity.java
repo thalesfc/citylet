@@ -170,8 +170,8 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
             ParseQuery<AnywallPost> query = AnywallPost.getQuery();
             query.include("user");
-            // TODO order by distance 
-            query.orderByDescending("createdAt");
+            query.whereNear("location", geoPointFromLocation(myLoc));
+//            query.orderByDescending("createdAt");
 //            query.whereWithinKilometers("location", geoPointFromLocation(myLoc), radius
 //                * METERS_PER_FEET / METERS_PER_KILOMETER);
 //            query.setLimit(MAX_POST_SEARCH_RESULTS);
