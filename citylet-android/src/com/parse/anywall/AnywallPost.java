@@ -11,31 +11,39 @@ import com.parse.ParseUser;
  */
 @ParseClassName("Posts")
 public class AnywallPost extends ParseObject {
-  public String getText() {
-    return getString("text");
-  }
+	public String getPrice(){
+		return getString("price");
+	}
+	
+	public void setPrice(String value){
+		put("price", value);
+	}
 
-  public void setText(String value) {
-    put("text", value);
-  }
+	public String getText() {
+		return getString("text");
+	}
 
-  public ParseUser getUser() {
-    return getParseUser("user");
-  }
+	public void setText(String value) {
+		put("text", value);
+	}
 
-  public void setUser(ParseUser value) {
-    put("user", value);
-  }
+	public ParseUser getUser() {
+		return getParseUser("user");
+	}
 
-  public ParseGeoPoint getLocation() {
-    return getParseGeoPoint("location");
-  }
+	public void setUser(ParseUser value) {
+		put("user", value);
+	}
 
-  public void setLocation(ParseGeoPoint value) {
-    put("location", value);
-  }
+	public ParseGeoPoint getLocation() {
+		return getParseGeoPoint("location");
+	}
 
-  public static ParseQuery<AnywallPost> getQuery() {
-    return ParseQuery.getQuery(AnywallPost.class);
-  }
+	public void setLocation(ParseGeoPoint value) {
+		put("location", value);
+	}
+
+	public static ParseQuery<AnywallPost> getQuery() {
+		return ParseQuery.getQuery(AnywallPost.class);
+	}
 }

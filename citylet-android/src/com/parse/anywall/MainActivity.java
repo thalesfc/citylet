@@ -600,7 +600,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             }
             // Display a red marker with a predefined title and no snippet
             markerOpts =
-                    markerOpts.title(post.getText()).snippet(post.getUser().getUsername())
+                    markerOpts.title(post.getText() + " (" + post.getPrice() + ")").snippet(post.getUser().getUsername())
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
 //            markerOpts =
 //                markerOpts.title(getResources().getString(R.string.post_out_of_range)).icon(
@@ -619,7 +619,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
             }
             // Display a green marker with the post information
             markerOpts =
-                markerOpts.title(post.getText()).snippet(post.getUser().getUsername())
+                markerOpts.title(post.getText() + " (" + post.getPrice() + ")").snippet(post.getUser().getUsername())
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
           }
           // Add a new marker
