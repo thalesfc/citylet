@@ -188,8 +188,11 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         }
         TextView contentView = (TextView) view.findViewById(R.id.contentView);
         TextView usernameView = (TextView) view.findViewById(R.id.usernameView);
+        TextView priceView = (TextView) view.findViewById(R.id.price);
         contentView.setText(post.getText());
         usernameView.setText(post.getUser().getUsername());
+        priceView.setTextColor(Color.RED); // Color.rgb also works
+        priceView.setText(post.getPrice());
         return view;
       }
     };
