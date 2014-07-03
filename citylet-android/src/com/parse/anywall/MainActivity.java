@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
@@ -17,21 +15,16 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -52,13 +45,10 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
-import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 public class MainActivity extends FragmentActivity implements LocationListener,
     GooglePlayServicesClient.ConnectionCallbacks,
@@ -245,7 +235,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     });
 
     // Set up the handler for the post button click
-    Button postButton = (Button) findViewById(R.id.postButton);
+    /*Button postButton = (Button) findViewById(R.id.postButton);
     postButton.setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
         // Only allow posts if we have a location
@@ -293,7 +283,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         });
         alert.create().show();
       }
-    });
+    });*/
   }
 
   /*
