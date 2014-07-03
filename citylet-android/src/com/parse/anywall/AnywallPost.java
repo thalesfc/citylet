@@ -1,6 +1,7 @@
 package com.parse.anywall;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -11,6 +12,13 @@ import com.parse.ParseUser;
  */
 @ParseClassName("Posts")
 public class AnywallPost extends ParseObject {
+	public ParseFile getImageFile() {
+		return getParseFile("image");
+	}
+
+	public void setImageFile(ParseFile file) {
+		put("image", file);
+	}
 	public String getPrice(){
 		return getString("price");
 	}

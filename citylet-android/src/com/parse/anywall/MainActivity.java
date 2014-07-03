@@ -45,8 +45,11 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
+import com.parse.ParseImageView;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 
@@ -181,8 +184,22 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         TextView priceView = (TextView) view.findViewById(R.id.price);
         contentView.setText(post.getText());
         usernameView.setText(post.getUser().getUsername());
+        // setting price on list
         priceView.setTextColor(Color.RED); // Color.rgb also works
         priceView.setText(post.getPrice());
+        // setting image on list
+        ParseFile imageFile = post.getImageFile();
+        ParseImageView imageView = (ParseImageView) view.findViewById(R.id.image);
+        if (imageFile != null) {
+        	imageView.setParseFile(imageFile);
+        	imageView.loadInBackground(new GetDataCallback() {
+				@Override
+				public void done(byte[] data, ParseException e) {
+					// nothing to do
+				}
+			});
+		}
+        
         return view;
       }
     };
