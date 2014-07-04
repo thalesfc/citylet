@@ -98,12 +98,6 @@ public class MainActivity extends FragmentActivity implements LocationListener,
   // Accuracy for calculating the map bounds
   private static final float OFFSET_CALCULATION_ACCURACY = 0.01f;
 
-  // Maximum results returned from a Parse query
-  private static final int MAX_POST_SEARCH_RESULTS = 20;
-
-  // Maximum post search radius for map in kilometers
-  private static final int MAX_POST_SEARCH_DISTANCE = 100;
-
   /*
    * Other class member variables
    */
@@ -164,14 +158,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         new ParseQueryAdapter.QueryFactory<AnywallPost>() {
           public ParseQuery<AnywallPost> create() {
             Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
-            ParseQuery<AnywallPost> query = AnywallPost.getQuery();
-            query.include("user");
-            query.whereNear("location", geoPointFromLocation(myLoc));
-//            query.orderByDescending("createdAt");
-//            query.whereWithinKilometers("location", geoPointFromLocation(myLoc), radius
-//                * METERS_PER_FEET / METERS_PER_KILOMETER);
-//            query.setLimit(MAX_POST_SEARCH_RESULTS);
-            return query;
+            return Commons.getParseQuery(Commons.geoPointFromLocation(myLoc));
           }
         };
 
@@ -496,8 +483,8 @@ public class MainActivity extends FragmentActivity implements LocationListener,
   public void onLocationChanged(Location location) {
     currentLocation = location;
     if (lastLocation != null
-        && geoPointFromLocation(location)
-            .distanceInKilometersTo(geoPointFromLocation(lastLocation)) < 0.01) {
+        && Commons.geoPointFromLocation(location)
+            .distanceInKilometersTo(Commons.geoPointFromLocation(lastLocation)) < 0.01) {
       // If the location hasn't changed by more than 10 meters, ignore it.
       return;
     }
@@ -565,14 +552,9 @@ public class MainActivity extends FragmentActivity implements LocationListener,
       cleanUpMarkers(new HashSet<String>());
       return;
     }
-    final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
+    final ParseGeoPoint myPoint = Commons.geoPointFromLocation(myLoc);
     // Create the map Parse query
-    ParseQuery<AnywallPost> mapQuery = AnywallPost.getQuery();
-    // Set up additional query filters
-    mapQuery.whereWithinKilometers("location", myPoint, MAX_POST_SEARCH_DISTANCE);
-    mapQuery.include("user");
-    mapQuery.orderByDescending("createdAt");
-    mapQuery.setLimit(MAX_POST_SEARCH_RESULTS);
+    ParseQuery<AnywallPost> mapQuery = Commons.getParseQuery(myPoint);
     // Kick off the query in the background
     mapQuery.findInBackground(new FindCallback<AnywallPost>() {
       @Override
@@ -669,13 +651,6 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         mapMarkers.remove(objId);
       }
     }
-  }
-
-  /*
-   * Helper method to get the Parse GEO point representation of a location
-   */
-  private ParseGeoPoint geoPointFromLocation(Location loc) {
-    return new ParseGeoPoint(loc.getLatitude(), loc.getLongitude());
   }
 
   /*
