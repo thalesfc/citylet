@@ -117,6 +117,9 @@ public class MainActivity extends FragmentActivity implements LocationListener,
   private float radius;
   private float lastRadius;
 
+  // Field for caching images
+  private final Map<String, ParseFile> mapImages = new HashMap<String, ParseFile>();
+  
   // Fields for helping process map and location changes
   private final Map<String, Marker> mapMarkers = new HashMap<String, Marker>();
   private int mostRecentMapUpdate = 0;
@@ -188,7 +191,15 @@ public class MainActivity extends FragmentActivity implements LocationListener,
         priceView.setTextColor(Color.RED); // Color.rgb also works
         priceView.setText(post.getPrice());
         // setting image on list
-        ParseFile imageFile = post.getImageFile();
+        String postID = post.getObjectId();
+        ParseFile imageFile = null;
+        if(mapImages.containsKey(postID))
+        	imageFile = mapImages.get(postID);
+        else{
+        	imageFile = post.getImageFile();
+        	mapImages.put(postID, imageFile);
+        }
+        
         ParseImageView imageView = (ParseImageView) view.findViewById(R.id.image);
         if (imageFile != null) {
         	imageView.setParseFile(imageFile);
