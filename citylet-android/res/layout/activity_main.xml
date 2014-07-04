@@ -25,11 +25,15 @@
         android:layout_height="fill_parent"
         android:layout_weight="3" />
 
-    <ListView
+    <GridView
         android:id="@+id/postsView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="5" >
-    </ListView>
+        android:layout_weight="5"
+        android:columnWidth="120dp"
+        android:numColumns="auto_fit"
+        android:gravity="center"
+        android:stretchMode="columnWidth" >
+    </GridView>
 
 </LinearLayout>

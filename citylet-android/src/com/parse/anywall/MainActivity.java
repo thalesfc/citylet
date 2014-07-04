@@ -23,7 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -222,7 +222,7 @@ public class MainActivity extends FragmentActivity implements LocationListener,
     posts.setPaginationEnabled(false);
 
     // Attach the query adapter to the view
-    ListView postsView = (ListView) this.findViewById(R.id.postsView);
+    GridView postsView = (GridView) this.findViewById(R.id.postsView);
     postsView.setAdapter(posts);
 
     // Set up the handler for an item's selection
