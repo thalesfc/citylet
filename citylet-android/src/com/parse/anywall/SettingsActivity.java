@@ -1,15 +1,9 @@
 package com.parse.anywall;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-
-import com.parse.ParseUser;
 
 /**
  * Activity that displays the settings screen.
@@ -51,7 +45,7 @@ public class SettingsActivity extends Activity {
     });
 
     // Set up the log out button click handler
-    ((Button) findViewById(R.id.logOutButton)).setOnClickListener(new OnClickListener() {
+    /*((Button) findViewById(R.id.logOutButton)).setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
         // Call the Parse log out method
         ParseUser.logOut();
@@ -60,6 +54,6 @@ public class SettingsActivity extends Activity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
       }
-    });
+    });*/
   }
 }

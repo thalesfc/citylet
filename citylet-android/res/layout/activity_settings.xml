@@ -44,13 +44,13 @@
             android:text="@string/feet_4000" />
     </RadioGroup>
 
-    <Button
+<!--     <Button
         android:id="@+id/logOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="@string/log_out" />
+        android:text="@string/log_out" /> -->
 
 </RelativeLayout>
