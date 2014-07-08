@@ -32,7 +32,7 @@ public class Application extends android.app.Application {
   }
 
   public static float getSearchDistance() {
-    return preferences.getFloat(KEY_SEARCH_DISTANCE, 250);
+    return preferences.getFloat(KEY_SEARCH_DISTANCE, 4000);
   }
 
   public static void setSearchDistance(float value) {
