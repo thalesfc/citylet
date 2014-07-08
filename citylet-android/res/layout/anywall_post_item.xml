@@ -4,10 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <com.parse.ParseImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
+    
     <TextView
         android:id="@+id/contentView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/image"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -22,10 +28,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/usernameView"/>
-    
-    <com.parse.ParseImageView
-        android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_below="@id/price"
-        android:layout_height="100dp"/>
 </RelativeLayout>
